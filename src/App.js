@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useContext, useReducer} from 'react'
+import { Container, Typography } from '@mui/material'
 
-function App() {
+import "./App.css"
+
+import { TodoContext } from "./Context/TodoContext"
+import todoReducer from "./Context/reducer"
+import TodoForm from './Component/TodoForm'
+
+
+const App = () => {
+  const [todos, dispatch] = useReducer(todoReducer, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <TodoContext.Provider value={{todos, dispatch}}>
+      <Container flexGrow >
+        <Typography variant='h4' align='center'>Todo App with Context API</Typography>
+        <TodoForm/>
+      </Container>
+    </TodoContext.Provider>
+  )
 }
 
-export default App;
+export default App
