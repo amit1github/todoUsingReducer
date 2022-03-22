@@ -6,6 +6,7 @@ import "./App.css"
 import { TodoContext } from "./Context/TodoContext"
 import todoReducer from "./Context/reducer"
 import TodoForm from './Component/TodoForm'
+import Todos from './Component/Todos'
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <Container flexGrow >
         <Typography variant='h4' align='center'>Todo App with Context API</Typography>
         <TodoForm/>
+        <Todos/>
       </Container>
     </TodoContext.Provider>
   )
